@@ -1,0 +1,47 @@
+table {
+  width: 30%;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 18px;
+  text-align: left;
+}
+
+th, td {
+  padding: 12px;
+  border: 1px solid #ddd;
+}
+
+th {
+  background-color: #f4f4f4;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.filters {
+  margin: 20px 0;
+  display: flex;
+  gap: 20px;
+}
+
+.filters label {
+  display: flex;
+  flex-direction: column;
+}
+
+.filters select,
+.filters input {
+  padding: 8px;
+  font-size: 16px;
+}
