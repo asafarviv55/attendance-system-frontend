@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link ,useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from './context/AuthContext';
 
 const Navbar = () => {
@@ -11,10 +11,17 @@ const Navbar = () => {
     navigate('/signin');  // Navigate to sign-in page after sign-out
   };
 
-
   return (
     <nav className="navbar">
-  <Link to="/">Home</Link>
+      <Link to="/">Home</Link>
+      {auth.token && (
+        <>
+          <Link to="/dashboard">Dashboard</Link>
+          <Link to="/attendance">Attendance</Link>
+          <Link to="/attendance-reports">Attendance Reports</Link>
+          <Link to="/clockinout">Clock In/Out</Link>
+        </>
+      )}
       {auth.role === 'admin' && (
         <>
           <Link to="/manage-users">Manage Users</Link>
@@ -28,7 +35,7 @@ const Navbar = () => {
         <Link to="/request-leave">Request Leave</Link>
       )}
       {auth.token ? (
-        <button onClick={signOut}>Sign Out</button>
+        <button onClick={handleSignOut}>Sign Out</button>
       ) : (
         <>
           <Link to="/signin">Sign In</Link>
