@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import '../css/SignUp.css';
 
 const SignUp = () => {
   const [email, setEmail] = useState('');
@@ -17,31 +18,43 @@ const SignUp = () => {
     }
   };
 
-  return (
-    <div className="container">
 
-    <form onSubmit={handleSubmit}>
-      <h2>Sign Up</h2>
-      <div>
-        <label>Email:</label>
-        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+  return (
+    <div className="auth-container">
+      <div className="left">
+        <h1>Register</h1>
+        <form>
+        <div className="form-group">
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>         
+          <button type="submit">Sign Up</button>
+        </form>
+        <div className="other-options">
+        <p>Allready Have an Account ?  <a href="/signin">Sign In</a></p>
+          
+        </div>
       </div>
-      <div>
-        <label>Password:</label>
-        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+      <div className="right">
+        <h2>Mastering Connections, Fueling Growth CRM Unleashed!</h2>
       </div>
-      <div>
-        <label>Role:</label>
-        <select value={roleName} onChange={(e) => setRoleName(e.target.value)}>
-          <option value="admin">Admin</option>
-          <option value="manager">Manager</option>
-          <option value="employee">Employee</option>
-        </select>
-      </div>
-      <button type="submit">Sign Up</button>
-    </form>
     </div>
   );
 };
-
 export default SignUp;

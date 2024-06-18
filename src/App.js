@@ -4,13 +4,16 @@ import { AuthProvider } from './context/AuthContext';
 import Navbar from './Navbar';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
-import Attendance from './components/Attendance';
 import AttendanceReports from './components/AttendanceReports';
 import Dashboard from './components/Dashboard';
 import ClockInOut from './components/ClockInOut';
 import LeaveRequest from './components/LeaveRequest';
 import ManageLeaveRequests from './components/ManageLeaveRequests';
 import ManageUsers from './components/ManageUsers';
+import ForgotPassword from './components/ForgotPassword';
+import ResetPassword from './components/ResetPassword';
+import Profile from './components/Profile';
+import ManageLocations from './components/ManageLocations';
 import PrivateRoute from './components/PrivateRoute';
 
 const App = () => (
@@ -21,11 +24,14 @@ const App = () => (
         <Routes>
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/reset-password/:token" element={<ResetPassword />} />
           <Route element={<PrivateRoute allowedRoles={['admin', 'manager', 'employee']} />}>
-            <Route path="/attendance" element={<Attendance />} />
             <Route path="/attendance-reports" element={<AttendanceReports />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/clockinout" element={<ClockInOut />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/manage-locations" element={<ManageLocations />} />
           </Route>
           <Route element={<PrivateRoute allowedRoles={['employee']} />}>
             <Route path="/request-leave" element={<LeaveRequest />} />

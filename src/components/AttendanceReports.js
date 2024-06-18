@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import '../css/AttendanceReports.css'; // Import the CSS file
 import axios from 'axios';
 import { format } from 'date-fns'; // Import the format function from date-fns
+import '../styles/global.css';
 
 
 const AttendanceReports = () => {

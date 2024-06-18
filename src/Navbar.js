@@ -13,13 +13,15 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
-      <Link to="/">Home</Link>
       {auth.token && (
         <>
           <Link to="/dashboard">Dashboard</Link>
           <Link to="/attendance">Attendance</Link>
           <Link to="/attendance-reports">Attendance Reports</Link>
           <Link to="/clockinout">Clock In/Out</Link>
+          <Link to="/profile">Profile</Link>
+
+          <Link to="/manage-locations">Manage Locations</Link>
         </>
       )}
       {auth.role === 'admin' && (
@@ -38,8 +40,9 @@ const Navbar = () => {
         <button onClick={handleSignOut}>Sign Out</button>
       ) : (
         <>
-          <Link to="/signin">Sign In</Link>
           <Link to="/signup">Sign Up</Link>
+          <Link to="/signin">Sign In</Link>
+          <Link to="/forgot-password">Forgot Password</Link>
         </>
       )}
     </nav>

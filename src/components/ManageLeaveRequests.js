@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { AuthContext } from '../context/AuthContext';
+import '../styles/global.css';
 
 const ManageLeaveRequests = () => {
   const { auth } = useContext(AuthContext);
