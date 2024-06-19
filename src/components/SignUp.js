@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import '../css/SignUp.css';
+import '../css/SignIn.css';
+
 
 const SignUp = () => {
   const [email, setEmail] = useState('');
@@ -20,9 +21,9 @@ const SignUp = () => {
 
 
   return (
-    <div className="auth-container">
-      <div className="left">
-        <h1>Register</h1>
+    <div className="container">
+      <div className="left-side">
+        <h2>Register</h2>
         <form>
         <div className="form-group">
             <label htmlFor="email">Email</label>
@@ -43,15 +44,29 @@ const SignUp = () => {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-          </div>         
-          <button type="submit">Sign Up</button>
+          </div>
+          <div className="form-group">
+          <label htmlFor="role">Role</label>
+          <select
+            id="role"
+            name="role"
+            value={roleName}
+            onChange={(e) => setRoleName(e.target.value)}
+            required
+          >
+            <option value="Employee">Employee</option>
+            <option value="Manager">Manager</option>
+            <option value="Admin">Admin</option>
+          </select>
+        </div>
+          <button type="submit" onClick={handleSubmit}  className="button">Sign Up</button>
         </form>
         <div className="other-options">
         <p>Allready Have an Account ?  <a href="/signin">Sign In</a></p>
           
         </div>
       </div>
-      <div className="right">
+      <div className="right-side">
         <h2>Mastering Connections, Fueling Growth CRM Unleashed!</h2>
       </div>
     </div>
