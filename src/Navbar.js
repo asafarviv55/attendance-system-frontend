@@ -16,25 +16,26 @@ const Navbar = () => {
       <div className="">
         {auth.token && (
           <>
-            <Link className="nav-link" to="/dashboard">Dashboard</Link>
-            <Link className="nav-link" to="/attendance">Attendance</Link>
-            <Link className="nav-link" to="/attendance-reports">Attendance Reports</Link>
-            <Link className="nav-link" to="/clockinout">Clock In/Out</Link>
             <Link className="nav-link" to="/profile">Profile</Link>
           </>
         )}
         {auth.role === 'admin' && (
           <>
             <Link className="nav-link" to="/manage-users">Manage Users</Link>
-            <Link className="nav-link" to="/manage-leave-requests">Manage Leave Requests</Link>
             <Link className="nav-link" to="/manage-locations">Manage Locations</Link>
+            <Link className="nav-link" to="/dashboard">Dashboard</Link>
+            <Link to="/bulk-import">Bulk Import</Link>
           </>
         )}
         {auth.role === 'manager' && (
           <Link className="nav-link" to="/manage-leave-requests">Manage Leave Requests</Link>
         )}
         {auth.role === 'employee' && (
+          <>
           <Link className="nav-link" to="/request-leave">Request Leave</Link>
+          <Link className="nav-link" to="/clockinout">Clock In/Out</Link>
+          <Link className="nav-link" to="/attendance-reports">Attendance Reports</Link>
+          </>
         )}
         {auth.token ? (
           <button onClick={handleSignOut}>Sign Out</button>

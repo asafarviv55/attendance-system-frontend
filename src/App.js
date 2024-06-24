@@ -47,6 +47,7 @@ const App = () => (
               </Route>
               <Route element={<PrivateRoute allowedRoles={['admin']} />}>
                 <Route path="/manage-users" element={<ManageUsers />} />
+                <Route path="/bulk-import" element={<BulkImport />} />
               </Route>
             </Routes>
         </div>
