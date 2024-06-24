@@ -75,7 +75,7 @@ const AttendanceReports = () => {
                   <td>{formatDate(report.clock_in)}</td> {/* Use formatDate function */}
                   <td>{formatDate(report.clock_out)}</td>
                   <td>{report.total_hours}</td>
-                  <td>{report.created_at}</td>
+                  <td>{formatDate(report.created_at)}</td>
                 </tr>
               ))}
             </tbody>

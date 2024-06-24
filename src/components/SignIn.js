@@ -13,7 +13,7 @@ const SignIn = () => {
     e.preventDefault();
     const result = await signIn(email, password);
     if (result.success) {
-      navigate('/attendance');
+      navigate('/attendance-reports');
     } else {
       alert(result.message);
     }

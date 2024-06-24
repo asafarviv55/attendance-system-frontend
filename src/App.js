@@ -15,6 +15,9 @@ import ResetPassword from './components/ResetPassword';
 import Profile from './components/Profile';
 import ManageLocations from './components/ManageLocations';
 import PrivateRoute from './components/PrivateRoute';
+import AttendanceCorrection from './components/AttendanceCorrection';
+import ManageCorrectionRequests from './components/ManageCorrectionRequests';
+
 
 const App = () => (
   <AuthProvider>
@@ -30,15 +33,17 @@ const App = () => (
               <Route element={<PrivateRoute allowedRoles={['admin', 'manager', 'employee']} />}>
                 <Route path="/attendance-reports" element={<AttendanceReports />} />
                 <Route path="/dashboard" element={<Dashboard />} />
-                <Route path="/clockinout" element={<ClockInOut />} />
                 <Route path="/profile" element={<Profile />} />
-                <Route path="/manage-locations" element={<ManageLocations />} />
               </Route>
               <Route element={<PrivateRoute allowedRoles={['employee']} />}>
+                <Route path="/clockinout" element={<ClockInOut />} />
                 <Route path="/request-leave" element={<LeaveRequest />} />
+                <Route path="/request-correction" element={<AttendanceCorrection />} />
               </Route>
               <Route element={<PrivateRoute allowedRoles={['admin', 'manager']} />}>
                 <Route path="/manage-leave-requests" element={<ManageLeaveRequests />} />
+                <Route path="/manage-correction-requests" element={<ManageCorrectionRequests />} />
+                <Route path="/manage-locations" element={<ManageLocations />} />
               </Route>
               <Route element={<PrivateRoute allowedRoles={['admin']} />}>
                 <Route path="/manage-users" element={<ManageUsers />} />

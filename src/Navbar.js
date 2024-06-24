@@ -1,8 +1,6 @@
 import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from './context/AuthContext';
-import "./css/Navbar.css"
-
 
 const Navbar = () => {
   const { auth, signOut } = useContext(AuthContext);
@@ -14,42 +12,48 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar-container">
     <nav className="navbar">
-      {auth.token && (
-        <>
-          <Link className="nav-link" to="/dashboard">Dashboard</Link>
-          <Link className="nav-link" to="/attendance">Attendance</Link>
-          <Link className="nav-link" to="/attendance-reports">Attendance Reports</Link>
-          <Link className="nav-link" to="/clockinout">Clock In/Out</Link>
-          <Link className="nav-link" to="/profile">Profile</Link>
-
-          <Link className="nav-link" to="/manage-locations">Manage Locations</Link>
-        </>
-      )}
-      {auth.role === 'admin' && (
-        <>
-          <Link className="nav-link" to="/manage-users">Manage Users</Link>
+      <div className="">
+        {auth.token && (
+          <>
+            <Link className="nav-link" to="/dashboard">Dashboard</Link>
+            <Link className="nav-link" to="/attendance">Attendance</Link>
+            <Link className="nav-link" to="/attendance-reports">Attendance Reports</Link>
+            <Link className="nav-link" to="/clockinout">Clock In/Out</Link>
+            <Link className="nav-link" to="/profile">Profile</Link>
+          </>
+        )}
+        {auth.role === 'admin' && (
+          <>
+            <Link className="nav-link" to="/manage-users">Manage Users</Link>
+            <Link className="nav-link" to="/manage-leave-requests">Manage Leave Requests</Link>
+            <Link className="nav-link" to="/manage-locations">Manage Locations</Link>
+          </>
+        )}
+        {auth.role === 'manager' && (
           <Link className="nav-link" to="/manage-leave-requests">Manage Leave Requests</Link>
-        </>
-      )}
-      {auth.role === 'manager' && (
-        <Link className="nav-link" to="/manage-leave-requests">Manage Leave Requests</Link>
-      )}
-      {auth.role === 'employee' && (
-        <Link className="nav-link" to="/request-leave">Request Leave</Link>
-      )}
-      {auth.token ? (
-        <button onClick={handleSignOut}>Sign Out</button>
-      ) : (
-        <>
-          <Link  className="nav-link" to="/signup">Sign Up</Link>
-          <Link  className="nav-link" to="/signin">Sign In</Link>
-          <Link  className="nav-link" to="/forgot-password">Forgot Password</Link>
-        </>
+        )}
+        {auth.role === 'employee' && (
+          <Link className="nav-link" to="/request-leave">Request Leave</Link>
+        )}
+        {auth.token ? (
+          <button onClick={handleSignOut}>Sign Out</button>
+        ) : (
+          <>
+            <Link className="nav-link" to="/signup">Sign Up</Link>
+            <Link className="nav-link" to="/signin">Sign In</Link>
+            <Link className="nav-link" to="/forgot-password">Forgot Password</Link>
+          </>
+        )}
+      </div>
+      {auth.token && (
+        <div >
+          User : {auth.userName}
+          <br></br>
+          Role : {auth.role}
+        </div>
       )}
     </nav>
-    </div>
   );
 };
 
