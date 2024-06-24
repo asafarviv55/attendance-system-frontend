@@ -1,14 +1,13 @@
 import React, { useContext } from 'react';
 import axios from 'axios';
 import { AuthContext } from '../context/AuthContext';
-import '../styles/global.css';
 
 
 
 
 const ClockInOut = () => {
   const { auth } = useContext(AuthContext);
-
+  
   const handleClockIn = async () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(async (position) => {
@@ -22,13 +21,15 @@ const ClockInOut = () => {
           alert(response.data.message);
         } catch (error) {
           console.error(error);
-          alert('Failed to clock in');
+          alert(error.response?.data?.message || 'Failed to clock in');
         }
       });
     } else {
       alert('Geolocation is not supported by this browser.');
     }
   };
+
+
 
   const handleClockOut = async () => {
     if (navigator.geolocation) {
@@ -43,7 +44,7 @@ const ClockInOut = () => {
           alert(response.data.message);
         } catch (error) {
           console.error(error);
-          alert('Failed to clock out');
+          alert(error.response?.data?.message || 'Failed to clock out');
         }
       });
     } else {
@@ -51,10 +52,17 @@ const ClockInOut = () => {
     }
   };
 
+
+
   return (
     <div className="container">
-      <button onClick={handleClockIn} className="clock-button">Clock In</button>
-      <button onClick={handleClockOut} className="clock-button">Clock Out</button>
+      <div className="left-side">
+          <button onClick={handleClockIn} className="button">Clock In</button>
+          <button onClick={handleClockOut} className="button">Clock Out</button>
+      </div>
+      <div className="right-side">
+
+      </div>
     </div>
   );
 };

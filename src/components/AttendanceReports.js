@@ -36,7 +36,7 @@ const AttendanceReports = () => {
   const formatDate = (dateString) => {
     try {
       const date = new Date(dateString);
-      return format(date, 'dd/MM/yyyy');
+      return format(date, 'dd/MM/yyyy HH:mm');
     } catch (error) {
       console.error('Error formatting date:', error);
       return dateString;  // Return the original string if formatting fails
@@ -72,8 +72,8 @@ const AttendanceReports = () => {
               {reports.map((report, index) => (
                 <tr key={index}>
                   <td>{report.user_id}</td>
-                  <td>{report.clock_in}</td> {/* Use formatDate function */}
-                  <td>{report.clock_out}</td>
+                  <td>{formatDate(report.clock_in)}</td> {/* Use formatDate function */}
+                  <td>{formatDate(report.clock_out)}</td>
                   <td>{report.total_hours}</td>
                   <td>{report.created_at}</td>
                 </tr>

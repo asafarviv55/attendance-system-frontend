@@ -1,0 +1,54 @@
+/* Reset some basic styles */
+body, html, nav, ul, li, a, button {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* styles/Navbar.css */
+.navbar-container {
+  width: 200px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  color: #fff; /* Text color */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 320px;
+}
+
+.navbar {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 20px;
+  width: 100%;
+  text-align: center;
+  transition: background-color 0.3s;
+}
+
+.navbar a:hover {
+  background-color: #4d4d4d; /* Adjust the hover background color */
+}
+
+.navbar button {
+  background: none;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.navbar button:hover {
+  background-color: #4d4d4d; /* Adjust the hover background color */
+}

@@ -21,28 +21,30 @@ const App = () => (
     <Router>
       <div className="App">
         <Navbar />
-        <Routes>
-          <Route path="/signin" element={<SignIn />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route path="/reset-password/:token" element={<ResetPassword />} />
-          <Route element={<PrivateRoute allowedRoles={['admin', 'manager', 'employee']} />}>
-            <Route path="/attendance-reports" element={<AttendanceReports />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/clockinout" element={<ClockInOut />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/manage-locations" element={<ManageLocations />} />
-          </Route>
-          <Route element={<PrivateRoute allowedRoles={['employee']} />}>
-            <Route path="/request-leave" element={<LeaveRequest />} />
-          </Route>
-          <Route element={<PrivateRoute allowedRoles={['admin', 'manager']} />}>
-            <Route path="/manage-leave-requests" element={<ManageLeaveRequests />} />
-          </Route>
-          <Route element={<PrivateRoute allowedRoles={['admin']} />}>
-            <Route path="/manage-users" element={<ManageUsers />} />
-          </Route>
-        </Routes>
+        <div className="main-content">
+            <Routes>
+              <Route path="/signin" element={<SignIn />} />
+              <Route path="/signup" element={<SignUp />} />
+              <Route path="/forgot-password" element={<ForgotPassword />} />
+              <Route path="/reset-password/:token" element={<ResetPassword />} />
+              <Route element={<PrivateRoute allowedRoles={['admin', 'manager', 'employee']} />}>
+                <Route path="/attendance-reports" element={<AttendanceReports />} />
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/clockinout" element={<ClockInOut />} />
+                <Route path="/profile" element={<Profile />} />
+                <Route path="/manage-locations" element={<ManageLocations />} />
+              </Route>
+              <Route element={<PrivateRoute allowedRoles={['employee']} />}>
+                <Route path="/request-leave" element={<LeaveRequest />} />
+              </Route>
+              <Route element={<PrivateRoute allowedRoles={['admin', 'manager']} />}>
+                <Route path="/manage-leave-requests" element={<ManageLeaveRequests />} />
+              </Route>
+              <Route element={<PrivateRoute allowedRoles={['admin']} />}>
+                <Route path="/manage-users" element={<ManageUsers />} />
+              </Route>
+            </Routes>
+        </div>
       </div>
     </Router>
   </AuthProvider>
